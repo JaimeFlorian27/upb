@@ -14,8 +14,8 @@ class Program
         double c = cGrados * (Math.PI / 180);
 
         //Cálculo de variables faltantes
-        double y = 1/Math.Tan(c) * z;
-        double t = 1/Math.Sin(c) * z;
+        double y = z / Math.Tan(c);
+        double t = z / Math.Sin(c) ;
         double a = 180 - 90 - cGrados;
 
         //Imprimir datos
