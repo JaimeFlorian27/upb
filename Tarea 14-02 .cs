@@ -25,7 +25,7 @@
             
             cartastotal += cartanueva;
 
-            if (cartastotal >= 21) Console.WriteLine("Sacó un " + cartanueva + ", Usted ha sido eliminado");
+            if (cartastotal > 21) Console.WriteLine("Sacó un " + cartanueva + ", Usted ha sido eliminado");
 
             else
             {
