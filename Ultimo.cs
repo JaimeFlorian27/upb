@@ -59,7 +59,7 @@ namespace ConsoleApp9
                     break;
                 case 2:
                     EPS = cotizacion * 0.04;
-                    pension = cotizacion * 0.4;
+                    pension = cotizacion * 0.04;
                     salariomensual = salario - pension - EPS;
                     salarioanual = salariomensual * 12 + salario;
                     Console.WriteLine("su salario mensual seria: " + salariomensual);
