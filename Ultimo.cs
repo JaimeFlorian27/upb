@@ -8,7 +8,7 @@ namespace ConsoleApp9
 {
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
             Console.WriteLine("Hola, por favor ingrese su salario: ");
             double salario = double.Parse(Console.ReadLine());
