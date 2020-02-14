@@ -35,10 +35,7 @@
                 Console.WriteLine("Ganaste, sacaste 3 dobles consecutivos, tu total fue de " + total);
                 respuesta = "n";
             }
-            
-            
-
-          
+    
             if (total >= 100)
             {
                 Console.WriteLine("Ganaste, sacaste 100 o más puntos, tu total fue de " + total);
@@ -57,15 +54,11 @@
                 Console.WriteLine("Desea Continuar (s/n)");
                 respuesta = Console.ReadLine();
             }
-
-            
-
-
             
         }
         double porcentaje = (mayor6 * 100.0) / turnos ;
         Console.WriteLine("Juego finalizado");
         Console.WriteLine("El porcentaje de turnos donde la suma de ambos dados fue más de seis es: " + porcentaje);
     }
-    }
+}
 
