@@ -1,83 +1,71 @@
 ﻿using System;
 
 
-
     class Program
     {
-        static void Main(string[] args)
+        static void Main()
         {
-        Console.WriteLine("Ingrese su salario mensual");
-        double salario = double.Parse(Console.ReadLine());
-
-        Console.WriteLine("Ingrese 1 si su salario es dependiente, o 2 si su salario es independiente");
-         double contrato = double.Parse(Console.ReadLine());
-
-        double smmlv = 877803;
-        double basecot = salario * 0.40;
-
-        if (basecot < smmlv )
+        Random Aleatorio = new Random();
+        int dado1 = 0, dado2 = 0, consecutivos = 0, total = 0, mayor6 = 0, turnos = 0;
+        string respuesta = "s";
+        while (respuesta == "s")
+            
         {
-            basecot = smmlv;
-        }
+            //int dado1 = int.Parse(Console.ReadLine()), dado2 = int.Parse(Console.ReadLine());
+            dado1 = Aleatorio.Next(1, 7);
+            dado2 = Aleatorio.Next(1, 7);
+            total += dado1 + dado2;
+            turnos++;
 
-        if (contrato == 2)
+            if (dado1 + dado2 > 6)  mayor6++;
+            
+
+            if (dado1 == dado2 )
             {
-                Console.WriteLine("Ingrese un número de 1 a 5 equivalente a la clase del riesgo");
-                double riesgo = double.Parse(Console.ReadLine());
-            double eps = basecot * 0.125;
-            double pension = basecot * 0.16;
-            double arl;
-
-            if (riesgo == 1)
-                {
-                    arl = basecot * (0.522/100);
-                
-
+                consecutivos ++ ;
+                Console.WriteLine(consecutivos);
+            }
+            else
+            {
+                consecutivos = 0;
             }
 
-                else if (riesgo == 2)
-                {
-                    arl = basecot * (1.044 / 100);
-
-                }
-
-                else if (riesgo == 3)
-                {
-                    arl = basecot * (2.436 / 100);
-
-                }
-
-                else if (riesgo == 4)
-                {
-                    arl = basecot * (4.350 / 100);
-
-                }
-                else
-                {
-                    arl = basecot * (6.960 / 100);
-
-                }
-
-            double salarealmen = salario - eps - pension - arl;
-            double salarealan = salarealmen * 12;
-            Console.WriteLine("Su salario real mensual es " + salarealmen + " y su salario real anual es: " + salarealan);
-        }
-        else
+            if (consecutivos == 3)
             {
-            double eps = basecot * 0.04;
-            double pension = basecot * 0.04;
+                Console.WriteLine("Ganaste, sacaste 3 dobles consecutivos, tu total fue de " + total);
+                respuesta = "n";
+            }
+            
+            
 
-            double salarealmen = salario - eps - pension;
-            double salarealan = salarealmen * 12 + salario;
-            Console.WriteLine("Su salario real mensual es " + salarealmen + " y su salario real anual es: " + salarealan);
+          
+            if (total >= 100)
+            {
+                Console.WriteLine("Ganaste, sacaste 100 o más puntos, tu total fue de " + total);
+                respuesta = "n";
+            }
+
+            else if (dado1 + dado2 == 2)
+            {
+                Console.WriteLine("chao papá");
+                respuesta = "n";
+
+            }
+            else
+            {
+                Console.WriteLine("Dado 1= " + dado1 + ", Dado 2= " + dado2 + ", total= " + total);
+                Console.WriteLine("Desea Continuar (s/n)");
+                respuesta = Console.ReadLine();
+            }
+
+            
 
 
+            
         }
-        }
-
-
-
-
+        double porcentaje = (mayor6 * 100.0) / turnos ;
+        Console.WriteLine("Juego finalizado");
+        Console.WriteLine("El porcentaje de turnos donde la suma de ambos dados fue más de seis es: " + porcentaje);
     }
-
+    }
 
