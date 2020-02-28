@@ -1,64 +1,51 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
 
-
+namespace ConsoleApp6
+{
     class Program
     {
-        static void Main()
+        static void Main(string[] args)
         {
-        Random Aleatorio = new Random();
-        int dado1 = 0, dado2 = 0, consecutivos = 0, total = 0, mayor6 = 0, turnos = 0;
-        string respuesta = "s";
-        while (respuesta == "s")
-            
-        {
-            //int dado1 = int.Parse(Console.ReadLine()), dado2 = int.Parse(Console.ReadLine());
-            dado1 = Aleatorio.Next(1, 7);
-            dado2 = Aleatorio.Next(1, 7);
-            total += dado1 + dado2;
-            turnos++;
+            double[] coordsx = { 0, 2, 3, 7 };
+            double[] coordsy = { 0, 1, 5, 6 };
+            double[] pendiente = { 0, 0, 0, 0 };
+            double[] distancia = { 0, 0, 0, 0 };
+            double[] cortey = { 0, 0, 0, 0 };
+            double distanciamayor=0;
+            bool pendientesiguales = false, cortesiguales = false;
+            for (int i = 0; i < 3; i++)
+            {
+                pendiente[i] = ((coordsy[i + 1] - coordsy[i]) / (coordsx[i + 1] - coordsx[i]));
+                Console.WriteLine("Pendiente entre " + coordsx[i] + "," + coordsx[i] + " y " + coordsx[i + 1] + "," + coordsy[i + 1] + " es: " + pendiente[i]);
+                cortey[i] = (coordsy[i] - (pendiente[i] * coordsx[i]));
+                Console.WriteLine("el corte en y es: " + cortey[i]);
+                distancia[i] = Math.Sqrt((Math.Pow(coordsx[i + 1] - coordsx[i], 2) + (Math.Pow(coordsy[i + 1] - coordsy[i], 2))));
+                Console.WriteLine("distancia es: " + distancia[i]);
 
-            if (dado1 + dado2 > 6)  mayor6++;
-            
 
-            if (dado1 == dado2 )
-            {
-                consecutivos ++ ;
-                Console.WriteLine(consecutivos);
-            }
-            else
-            {
-                consecutivos = 0;
-            }
-
-            if (consecutivos == 3)
-            {
-                Console.WriteLine("Ganaste, sacaste 3 dobles consecutivos, tu total fue de " + total);
-                respuesta = "n";
-            }
-    
-            if (total >= 100)
-            {
-                Console.WriteLine("Ganaste, sacaste 100 o más puntos, tu total fue de " + total);
-                respuesta = "n";
-            }
-
-            else if (dado1 + dado2 == 2)
-            {
-                Console.WriteLine("chao papá");
-                respuesta = "n";
+                if (distancia[i] > distanciamayor) distanciamayor = distancia[i];
+                Console.WriteLine("la distancia mayor fue:" + distancia[i]);
 
             }
-            else
+            for (int i = 0; i<3; i++)
             {
-                Console.WriteLine("Dado 1= " + dado1 + ", Dado 2= " + dado2 + ", total= " + total);
-                Console.WriteLine("Desea Continuar (s/n)");
-                respuesta = Console.ReadLine();
+                if (pendiente[i] == pendiente[i + 1]) pendientesiguales = true;
+                if (cortey[i] == cortey[i + 1]) cortesiguales = true;
+
             }
-            
+            if (cortesiguales ==true && pendientesiguales ==true)
+            {
+                Console.WriteLine ("Hacen Parte de la misma recta");
+            }
+            if (i % 3 == 0)
+            {
+
+            }
+            coordsx
         }
-        double porcentaje = (mayor6 * 100.0) / turnos ;
-        Console.WriteLine("Juego finalizado");
-        Console.WriteLine("El porcentaje de turnos donde la suma de ambos dados fue más de seis es: " + porcentaje);
     }
 }
-
