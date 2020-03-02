@@ -1,0 +1,40 @@
+using System;
+using System.Collections.Generic;
+
+namespace ConsoleApp13
+{
+    class Program
+    {
+        static void Main()
+        {
+            int[] A = { 0, 15, 6, 12, 3, 18, 12, 6, 9 };
+            int[] B = { 4, 0, 18, 6, 16, 10, 14, 2, 12, 8, 2 };
+
+            List<int> interseccion = new List<int>();
+
+            for (int i =0; i <A.Length;i++)
+            {
+                for (int j = 0; j < B.Length; j++)
+                {
+                    if (A[i] == B[j])
+                    {
+                        interseccion.Add(A[i]);
+                    }
+                }
+            }
+            interseccion.Sort();
+            for (int k =0; k < interseccion.Count-1;k++)
+            {
+                if (interseccion[k] == interseccion[k+1])
+                {
+                    interseccion.RemoveAt(k);
+                }
+            }
+            for (int l = 0; l < interseccion.Count; l++)
+            {
+                Console.WriteLine(interseccion[l]);
+            }
+            
+        }
+    }
+}
